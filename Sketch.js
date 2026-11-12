@@ -1,17 +1,15 @@
-let img;
+let punchImage;
 
-async function setup() {
-  // Load the image.
-  img = await loadImage("/assets/punch.png");
+function preload() {
+  punchImage = loadImage("assets/punch.png");
+}
 
-  createCanvas(100, 100);
+function setup() {
+  createCanvas(400, 600);
+}
 
-  background(50);
+function draw() {
+  background("beige");
 
-  // Draw the image.
-  image(img, 0, 0);
-
-  describe(
-    "An image of the underside of a white umbrella with a gridded ceiling above.",
-  );
+  image(punchImage, 170, 300, 60, 70);
 }
