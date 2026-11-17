@@ -1,35 +1,43 @@
 /*class Player */
 
-class Player{
-
-  constructor(image, posX, posY, width, height){ 
-      this.image = image;
-      this.posX = posX;
-      this.posY = posY;
-      this.width = width;
-      this.height = height;
+class Player {
+  constructor(image, posX, posY, width, height) {
+    this.image = image;
+    this.posX = posX;
+    this.posY = posY;
+    this.width = width;
+    this.height = height;
   }
 
-  display(){
+  display() {
     image(this.image, this.posX, this.posY, this.width, this.height);
-    this.posY += 5;
-
+    // this.posY += 3;
   }
 
-  moveLeft(){
-    this.posX = this.posX -10;
+  moveLeft() {
+    this.posX = this.posX - 10;
   }
 
-  moveRight(){
+  moveRight() {
     this.posX += 10;
   }
 
 
+
 }
+class Platform {
+  constructor(image, posX, posY, width, height) {
+    this.image = image;
+    this.posX = posX;
+    this.posY = posY;
+    this.width = width;
+    this.height = height;
+  }
 
-
-
-
+  display() {
+    image(this.image, this.posX, this.posY, this.width, this.height);
+  }
+}
 
 let punchImage; // Variable to store Punch's image
 let backgroundImage; // Stores the jungle background
@@ -37,8 +45,7 @@ let greenBranchImage; // Stores the green branch image
 let brownBranchImage; // Stores the brown branch image
 let mossBranchImage; // Stores the moss branch image
 let punch;
-
-
+let greenPlatform;
 
 // Loads the image before the game starts
 function preload() {
@@ -48,35 +55,28 @@ function preload() {
   brownBranchImage = loadImage("assets/branch-brown.png");
   mossBranchImage = loadImage("assets/branch-moss.png");
   punch = new Player(punchImage, 200, 0, 60, 70);
- 
+  greenPlatform = new Platform(greenBranchImage, 120, 400, 160, 60);
 }
 
 // Runs once when the game starts
 function setup() {
   createCanvas(400, 600);
-
 }
 // Runs continuously to draw the game
 function draw() {
-
   image(backgroundImage, 0, 0, 400, 600); // Draws the jungle background
-  image(greenBranchImage, 120, 450, 160, 60); // Draws the green platform
+  greenPlatform.display();
   image(brownBranchImage, 50, 250, 160, 60); // Draws the brown platform
   image(mossBranchImage, 220, 150, 160, 60); // Draws the moss platform
   //// Displays Punch's image on the screen
 
-
-  if(keyIsDown(LEFT_ARROW) === true){
+  if (keyIsDown(LEFT_ARROW) === true) {
     punch.moveLeft();
   }
 
-  if(keyIsDown(RIGHT_ARROW) === true){
+  if (keyIsDown(RIGHT_ARROW) === true) {
     punch.moveRight();
   }
 
   punch.display();
-
-
-
-
 }
