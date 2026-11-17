@@ -10,6 +10,7 @@ function preload() {
   greenBranchImage = loadImage("assets/branch-green.png");
   brownBranchImage = loadImage("assets/branch-brown.png");
   mossBranchImage = loadImage("assets/branch-moss.png");
+}
 // Runs once when the game starts
 function setup() {
   createCanvas(400, 600);
