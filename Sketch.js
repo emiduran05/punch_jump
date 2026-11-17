@@ -21,6 +21,9 @@ class Player {
   moveRight() {
     this.posX += 10;
   }
+
+
+
 }
 class Platform {
   constructor(image, posX, posY, width, height) {
