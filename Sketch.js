@@ -1,6 +1,8 @@
+/*class Player */
+
 class Player{
 
-  constructor(image, posX, posY, width, height){
+  constructor(image, posX, posY, width, height){ 
       this.image = image;
       this.posX = posX;
       this.posY = posY;
@@ -10,6 +12,7 @@ class Player{
 
   display(){
     image(this.image, this.posX, this.posY, this.width, this.height);
+    this.posY += 5;
 
   }
 
@@ -45,7 +48,7 @@ function preload() {
   greenBranchImage = loadImage("assets/branch-green.png");
   brownBranchImage = loadImage("assets/branch-brown.png");
   mossBranchImage = loadImage("assets/branch-moss.png");
-  punch = new Player(punchImage, 200, 300, 60, 70);
+  punch = new Player(punchImage, 200, 0, 60, 70);
  
 }
 
