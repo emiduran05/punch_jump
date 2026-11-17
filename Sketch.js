@@ -24,7 +24,6 @@ class Player{
     this.posX += 10;
   }
 
-  
 
 }
 
