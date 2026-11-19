@@ -9,14 +9,41 @@ export class Player {
 
   display() {
     image(this.image, this.posX, this.posY, this.width, this.height);
-    // this.posY += 3;
+
+    if(this.posY <= 500 - this.height){
+      this.posY += 5;
+
+    }else{
+
+    }
+
+  
+  
+
+    
   }
 
   moveLeft() {
-    this.posX = this.posX - 10;
+    if(this.posX === 0){
+
+    }else{
+      this.posX = this.posX - 10;
+
+    }
   }
 
   moveRight() {
     this.posX += 10;
   }
+
+  isColliding(object) {
+        if (
+            Math.abs(this.posY + this.height - object.posY) < 5 &&
+            this.posX + this.width >= object.posX &&
+            this.posX <= object.posX + object.width
+        ) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -43,4 +43,10 @@ function draw() {
   }
 
   punch.display();
+
+  if(punch.isColliding(greenPlatform) === true){
+    console.log("Choco");
+  }
+
+  
 }
