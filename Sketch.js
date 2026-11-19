@@ -2,6 +2,8 @@
 
 import { Player } from "./Classes/player.js";
 import { Platform } from "./Classes/GreenPlatform.js";
+import { BrownPlatform } from "./Classes/BrownPlatform.js";
+import { MossPLatform } from "./Classes/MossPlatform.js";
 
 let punchImage; // Variable to store Punch's image
 let backgroundImage; // Stores the jungle background
@@ -10,6 +12,8 @@ let brownBranchImage; // Stores the brown branch image
 let mossBranchImage; // Stores the moss branch image
 let punch;
 let greenPlatform;
+let brownPlatform;
+let mossPlatform;
 
 // Loads the image before the game starts
 function preload() {
@@ -20,6 +24,8 @@ function preload() {
   mossBranchImage = loadImage("assets/branch-moss.png");
   punch = new Player(punchImage, 200, 0, 60, 70);
   greenPlatform = new Platform(greenBranchImage, 120, 400, 160, 60);
+  brownPlatform = new BrownPlatform(brownBranchImage,50,250,160,60, 5);
+  mossPlatform = new MossPLatform(mossBranchImage,220,150,160,60,true);
 }
 
 // Runs once when the game starts
@@ -30,9 +36,12 @@ function setup() {
 function draw() {
   image(backgroundImage, 0, 0, 400, 600); // Draws the jungle background
   greenPlatform.display();
-  image(brownBranchImage, 50, 250, 160, 60); // Draws the brown platform
-  image(mossBranchImage, 220, 150, 160, 60); // Draws the moss platform
+  brownPlatform.display();
+  mossPlatform.display();
+
   //// Displays Punch's image on the screen
+
+  brownPlatform.moves();
 
   if (keyIsDown(LEFT_ARROW) === true) {
     punch.moveLeft();
@@ -46,6 +55,11 @@ function draw() {
 
   if(punch.isColliding(greenPlatform) === true){
     console.log("Choco");
+  }else if(punch.isColliding(brownPlatform) === true){
+    console.log("Choco con brown");
+
+  }else if(punch.isColliding(mossPlatform) === true){
+    mossPlatform.visible = false;
   }
 
   
